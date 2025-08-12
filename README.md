@@ -101,27 +101,6 @@ If the connection fails:
 3. **Check Cursor logs**: Look for MCP connection errors in Cursor's developer console
 4. **Test manually**: Use the MCP Inspector to verify your server works independently
 
-#### **6. Advanced Configuration**
-
-You can add multiple MCP servers or customize the configuration:
-
-```json
-{
-  "mcpServers": {
-    "weather": {
-      "type": "http",
-      "url": "http://localhost:3000/mcp",
-      "headers": {
-        "Authorization": "Bearer your-weatherapi-key-here"
-      }
-    },
-    "other-server": {
-      "type": "http",
-      "url": "http://localhost:3001/mcp"
-    }
-  }
-}
-```
 
 ### **Getting Your API Key**
 1. Sign up for free at [WeatherAPI.com](https://www.weatherapi.com/signup.aspx)
@@ -138,18 +117,6 @@ You can add multiple MCP servers or customize the configuration:
 | Get current weather           | `GET /v1/current.json` with location parameter           |
 | Get weather forecast          | `GET /v1/forecast.json` with location and days           |
 | Search for locations          | `GET /v1/search.json` with query parameter               |
-
-Typical MCP request:
-
-```json
-POST /mcp
-{
-  "tool": "getCurrentWeather",
-  "input": {
-    "location": "London"
-  }
-}
-```
 
 ---
 
@@ -225,7 +192,7 @@ bun install
 bun run simple-mcp-server.ts
 ```
 
-Send a request:
+Send a request with curl if you feel like it:
 ```bash
 curl -X POST "http://localhost:3000/mcp" \
   -H "Content-Type: application/json" \
